@@ -1,6 +1,6 @@
-import 'package:auchan/ui/theme/app_colors.dart';
-import 'package:auchan/ui/widgets/intro/intro_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:olucha_kids/ui/themes/app_colors.dart';
+import 'package:olucha_kids/ui/widgets/auth/auth_widget.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -8,18 +8,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Auchan ',
+        title: 'Auchan ',
         theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.green,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: AppColors.white,
+          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: AppColors.white,
+            selectedItemColor: AppColors.blue,
+            unselectedItemColor: Colors.grey,
+          ),
         ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: AppColors.red,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-        ),
-      ),
-      home:  const IntroWidget()
-    );
+        home: const AuthWidget());
   }
 }

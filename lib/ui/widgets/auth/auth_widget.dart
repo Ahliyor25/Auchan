@@ -1,6 +1,7 @@
-import 'package:auchan/ui/theme/app_button_style.dart';
-import 'package:auchan/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:olucha_kids/ui/themes/app_button_style.dart';
+import 'package:olucha_kids/ui/themes/app_colors.dart';
+
 
 import 'otp.dart';
 
@@ -12,6 +13,29 @@ class AuthWidget extends StatefulWidget {
 }
 
 class _AuthWidgetState extends State<AuthWidget> {
+  // Future<http.Response> sendSms(String title) async {
+  //   var uname = 'ACfc3d1ca24a20de9462c749169d183431';
+  //   var pword = '30de964742645a87de3f6d160c85615a';
+  //   var authn =
+  //       'Basic ' + convert.base64Encode(convert.utf8.encode('$uname:$pword'));
+
+  //   var data = {
+  //     'From': '+13082183252',
+  //     'Body': 'Hi there',
+  //     'To': title,
+  //   };
+
+  //   var res = await http.post(
+  //       Uri.parse(
+  //           'https://api.twilio.com/2010-04-01/Accounts/ACfc3d1ca24a20de9462c749169d183431/Messages.json'),
+  //       headers: {'Authorization': authn},
+  //       body: data);
+  //   if (res.statusCode != 201) {
+  //     throw Exception('http.post error: statusCode= ${res.statusCode}');
+  //   }
+  //   return res;
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +45,14 @@ class _AuthWidgetState extends State<AuthWidget> {
           child: Stack(
             children: [
               SingleChildScrollView(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 32),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 32),
                 scrollDirection: Axis.vertical,
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
-                physics: BouncingScrollPhysics(),
-                child: Container(
-                  width: double.infinity,
+                physics: const BouncingScrollPhysics(),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -47,17 +70,6 @@ class _AuthWidgetState extends State<AuthWidget> {
                       // SizedBox(
                       //   height: 18,
                       // ),
-                      Container(
-                        width: 150,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: AppColors.red.withOpacity(0.05),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset(
-                          'images/logo.png',
-                        ),
-                      ),
 
                       const SizedBox(
                         height: 15,
@@ -74,7 +86,7 @@ class _AuthWidgetState extends State<AuthWidget> {
                         height: 10,
                       ),
                       const Text(
-                        'Укажите номер телефона чтобы войти или стать клиентом "Ашан" ',
+                        'Укажите номер телефона чтобы войти',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -87,6 +99,7 @@ class _AuthWidgetState extends State<AuthWidget> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(28),
+                        height: MediaQuery.of(context).size.height * 0.6,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
@@ -119,11 +132,11 @@ class _AuthWidgetState extends State<AuthWidget> {
 
                                 enabledBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.black12),
+                                        const BorderSide(color: Colors.black12),
                                     borderRadius: BorderRadius.circular(10)),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.black12),
+                                        const BorderSide(color: Colors.black12),
                                     borderRadius: BorderRadius.circular(10)),
 
                                 // suffixIcon: Icon(

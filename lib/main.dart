@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'ui/widgets/app/my_app.dart';
+import 'package:olucha_kids/ui/widgets/app/my_app.dart';
 
 void main() {
   const app = MyApp();

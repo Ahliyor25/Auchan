@@ -1,6 +1,7 @@
-import 'package:auchan/ui/theme/app_button_style.dart';
-import 'package:auchan/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:olucha_kids/ui/themes/app_button_style.dart';
+import 'package:olucha_kids/ui/themes/app_colors.dart';
+import 'package:olucha_kids/ui/widgets/main_screen/main_screen_widget.dart';
 
 class Otp extends StatefulWidget {
   const Otp({Key? key}) : super(key: key);
@@ -10,14 +11,17 @@ class Otp extends StatefulWidget {
 }
 
 class _OtpState extends State<Otp> {
+  final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+          child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
               Align(
@@ -29,17 +33,6 @@ class _OtpState extends State<Otp> {
                     size: 32,
                     color: Colors.black54,
                   ),
-                ),
-              ),
-              Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: AppColors.red.withOpacity(0.03),
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(
-                  'images/logo.png',
                 ),
               ),
               const SizedBox(
@@ -78,17 +71,40 @@ class _OtpState extends State<Otp> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        _textFieldOTP(first: true, last: false),
-                        _textFieldOTP(first: false, last: false),
-                        _textFieldOTP(first: false, last: false),
-                        _textFieldOTP(first: false, last: true),
+                      children: const [
+                        // _textFieldOTP(first: true, last: false),
+                        // _textFieldOTP(first: false, last: false),
+                        // _textFieldOTP(first: false, last: false),
+                        // _textFieldOTP(first: false, last: true),
                       ],
+                    ),
+                    TextField(
+                      controller: _controller,
+                      autofocus: true,
+                      decoration: const InputDecoration(
+                        hintText: 'Введите код',
+                        hintStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.number,
+                      maxLength: 4,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const MainScreenWidget()),
+                          );
+                        },
                         style: AppButtonStyle.linkButton,
                         child: const Padding(
                           padding: EdgeInsets.all(14.0),
@@ -98,60 +114,62 @@ class _OtpState extends State<Otp> {
                           ),
                         ),
                       ),
+                    ),
+                    TextButton(
+                      child: const Text(
+                        'Отправить код повторно',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black38,
+                        ),
+                      ),
+                      onPressed: () {},
                     )
                   ],
                 ),
+                height: MediaQuery.of(context).size.height * 0.6,
               ),
-              TextButton(
-                child: const Text(
-                  'Отправить код повторно',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black38,
-                  ),
-                ),
-                onPressed: () {},
-              )
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _textFieldOTP({bool? first, last}) {
-    return SizedBox(
-      height: 65,
-      child: AspectRatio(
-        aspectRatio: 1.0,
-        child: TextField(
-          autofocus: true,
-          onChanged: (value) {
-            if (value.length == 1 && last == false) {
-              FocusScope.of(context).nextFocus();
-            }
-            if (value.isEmpty && first == false) {
-              FocusScope.of(context).previousFocus();
-            }
-          },
-          showCursor: false,
-          readOnly: false,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          keyboardType: TextInputType.number,
-          maxLength: 1,
-          decoration: InputDecoration(
-            counter: const Offstage(),
-            enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: 2, color: Colors.black12),
-                borderRadius: BorderRadius.circular(12)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: 2, color: AppColors.red),
-                borderRadius: BorderRadius.circular(12)),
-          ),
-        ),
-      ),
+      )),
     );
   }
 }
+
+//   Widget _textFieldOTP({bool? first, last}) {
+//     return SizedBox(
+//       height: 65,
+//       child: AspectRatio(
+//         aspectRatio: 1.0,
+//         child: TextField(
+//           autofocus: true,
+//           onChanged: (value) {
+//             if (value.length == 1 && last == false) {
+//               FocusScope.of(context).nextFocus();
+//             }
+//             if (value.isEmpty && first == false) {
+//               FocusScope.of(context).previousFocus();
+//             }
+//           },
+//           showCursor: false,
+//           readOnly: false,
+//           textAlign: TextAlign.center,
+//           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//           keyboardType: TextInputType.phone,
+//           maxLength: 1,
+//           decoration: InputDecoration(
+//             counter: const Offstage(),
+//             enabledBorder: OutlineInputBorder(
+//                 borderSide: const BorderSide(width: 2, color: Colors.black12),
+//                 borderRadius: BorderRadius.circular(12)),
+//             focusedBorder: OutlineInputBorder(
+//                 borderSide: const BorderSide(width: 2, color: AppColors.red),
+//                 borderRadius: BorderRadius.circular(12)),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
