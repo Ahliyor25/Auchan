@@ -7,12 +7,12 @@ class CategoryListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height * 1.37,
+        height: MediaQuery.of(context).size.height * 1.50,
         padding: const EdgeInsets.all(12.0),
         child: GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          padding: EdgeInsets.only(bottom: 20.0),
+          padding: const EdgeInsets.only(bottom: 20.0),
           primary: false,
           itemCount: 10,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -49,8 +49,9 @@ class CategoryItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: Image(image: AssetImage('images/banana.png'))),
-              SizedBox(height: 8),
+              const Center(
+                  child: Image(image: AssetImage('images/banana.png'))),
+              const SizedBox(height: 8),
               Text(
                 "Фрукты",
                 style: GoogleFonts.montserrat(

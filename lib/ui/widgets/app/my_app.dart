@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             backgroundColor: AppColors.white,
           ),
+          primaryColor: AppColors.red,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: AppColors.white,
             selectedItemColor: AppColors.blue,

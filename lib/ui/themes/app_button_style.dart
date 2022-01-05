@@ -39,4 +39,18 @@ abstract class AppButtonStyle {
       ),
     ),
   );
+  static final ButtonStyle countProduct = ButtonStyle(
+    foregroundColor: MaterialStateProperty.all<Color>(AppColors.blue),
+    shadowColor:
+        MaterialStateProperty.all<Color>(AppColors.dark.withOpacity(0.1)),
+    backgroundColor: MaterialStateProperty.all<Color>(AppColors.lightBlue),
+    padding: MaterialStateProperty.all<EdgeInsets>(
+      const EdgeInsets.symmetric(vertical: 3.0, horizontal: 3.0),
+    ),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(360.0),
+      ),
+    ),
+  );
 }

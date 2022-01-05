@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:olucha_kids/ui/themes/app_colors.dart';
 import 'package:olucha_kids/ui/widgets/catalog_category/catalog_list.dart';
+import 'package:olucha_kids/ui/widgets/home/home_widget.dart';
 
 import 'package:olucha_kids/ui/widgets/promotion_list/promotion_list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,26 +34,13 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     );
 
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text('',
-      //       style: GoogleFonts.montserrat(
-      //           fontSize: 20,
-      //           fontWeight: FontWeight.w600,
-      //           color: AppColors.dark)),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: const Icon(Icons.search, color: AppColors.dark),
-      //     )
-      //   ],
-      // ),
+      backgroundColor: AppColors.bgGrey,
       body: IndexedStack(
         index: _selectedTab,
         children: const [
           PromotionListWidget(),
           CatalogListWidget(),
-          Text("Главная"),
+          HomeWidget(),
           Text("Покупки"),
         ],
       ),
